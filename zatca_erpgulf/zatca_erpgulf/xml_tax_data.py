@@ -45,8 +45,7 @@ def get_exemption_reason_map():
         "VATEX-SA-HEA": "Private healthcare to citizen.",
         "VATEX-SA-MLTRY": "Supply of qualified military goods",
         "VATEX-SA-OOS": (
-            "The reason is a free text, has to be provided by the taxpayer on a "
-            "case-by-case basis."
+            "Not subject to VAT"
         ),
     }
 
