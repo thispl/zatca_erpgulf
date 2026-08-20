@@ -1413,12 +1413,12 @@ def zatca_background(invoice_number: str, source_doc:str|dict=None, bypass_backg
                 ):
                     frappe.throw(
                         _(
-                            "As per ZATCA regulations, Customer Tax ID must start with 3 and end with 3."
+                            "As per ZATCA regulations, Customer Tax ID need to  start with 3 and end with 3."
                         )
                     )
         tax_id = (customer_doc.tax_id or "").strip()
 
-        if tax_id:  # :white_check_mark: Only validate if value exists (not None / empty)
+        if tax_id and address and address.country == SAUDI_ARABIA:
             if (
                 not tax_id.isdigit()
                 or len(tax_id) != 15
@@ -1881,7 +1881,7 @@ def zatca_background_on_submit(doc: "str|dict", _method: str = None, bypass_back
                     )
         tax_id = (customer_doc.tax_id or "").strip()
 
-        if tax_id:  # :white_check_mark: Only validate if value exists (not None / empty)
+        if tax_id and address and address.country == SAUDI_ARABIA:
             if (
                 not tax_id.isdigit()
                 or len(tax_id) != 15
