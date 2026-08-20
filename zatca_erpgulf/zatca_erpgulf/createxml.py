@@ -13,7 +13,7 @@ from zatca_erpgulf.zatca_erpgulf.country_code import country_code_mapping
 
 CBC_ID = "cbc:ID"
 DS_TRANSFORM = "ds:Transform"
-
+SAUDI_ARABIA = "Saudi Arabia"
 
 def get_icv_code(invoice_number):
     """
