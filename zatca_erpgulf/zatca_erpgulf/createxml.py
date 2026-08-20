@@ -741,10 +741,11 @@ def customer_data(invoice, sales_invoice_doc):
         # if address and address.country == "Saudi Arabia":
         #     cbc_company_id = ET.SubElement(cac_partytaxscheme_1, "cbc:CompanyID")
         #     cbc_company_id.text = customer_doc.tax_id
-         # Only add CompanyID if custom_buyer_id is not set
-        if not customer_doc.custom_buyer_id or customer_doc.tax_id:
+                 # Only add CompanyID for Saudi customers - ZATCA BR-KSA-44 requires
+        # BT-48 to be a 15-digit KSA VAT number starting and ending with 3
+        if customer_doc.tax_id and address and address.country == SAUDI_ARABIA:
             cbc_company_id = ET.SubElement(cac_partytaxscheme_1, "cbc:CompanyID")
-            cbc_company_id.text = customer_doc.tax_id 
+            cbc_company_id.text = customer_doc.tax_id
 
 
         # Always include tax scheme
